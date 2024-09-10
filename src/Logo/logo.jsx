@@ -40,6 +40,32 @@ export default function Logo() {
     return <span>{displayText}</span>;
   };
 
+  function DelayedSpan() {
+    // State to manage whether the span is shown or not
+    const [showSpan, setShowSpan] = useState(false);
+
+    useEffect(() => {
+      // Set a timeout to update state after 1000ms (1 second)
+      const timer = setTimeout(() => {
+        setShowSpan(true);
+      }, 1000);
+
+      // Cleanup function to clear the timeout if the component unmounts
+      return () => clearTimeout(timer);
+    }, []); // Empty dependency array means this runs once when the component mounts
+
+    return (
+      <>
+        {/* Render the span only if showSpan is true */}
+        {showSpan && (
+          <span>
+            <FaHeart />
+          </span>
+        )}
+      </>
+    );
+  }
+
   return (
     <div className="logo-container">
       <div className="image-container">
@@ -48,8 +74,9 @@ export default function Logo() {
 
       <div className="text-container">
         <TypeWriter texts={["WELCOME "]} />
+        <DelayedSpan />
         {/* <span>
-          <FaHeart />
+          
         </span> */}
       </div>
     </div>

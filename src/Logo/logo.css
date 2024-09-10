@@ -5,7 +5,6 @@
     --color4: #aff1f9;
 }
 
-.logo-container {}
 
 .image-container {
     margin: 20px; /* Reduced margin for smaller screens */
@@ -18,17 +17,20 @@
 }
 
 .text-container {
-    position: relative; 
-    width: 80%; /* Increased width to occupy more space on smaller screens */
-    max-width: 600px; /* Reduced max width for better fit on mobile */
-    margin: 15px auto; /* Reduced margin for mobile */
-    padding: 15px; /* Reduced padding */
-    background-color: #FFF; 
-    border: 1px solid #ddd; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    box-sizing: border-box; 
-    text-align: center; 
-    border-radius: 1.5rem; /* Reduced border-radius for smaller screens */
+    gap: 15px;
+    display: flex;
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 15px auto;
+    padding: 15px;
+    background-color: #FFF;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 1.5rem;
+    justify-content: center;
  
 }
 
@@ -44,6 +46,9 @@
       1px 1px 0 rgba(0, 0, 0, 0.2), 
       2px 2px 0 rgba(0, 0, 0, 0.2), 
       3px 3px 0 rgba(0, 0, 0, 0.2); 
+}
+.text-container span svg{
+    font-size: 35px;
 }
 
 /* Media queries for smaller screens */
@@ -66,6 +71,9 @@
     .text-container span {
         font-size: 40px; /* Further reduce font size */
     }
+    .text-container span svg{
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -85,5 +93,21 @@
 
     .text-container span {
         font-size: 30px; /* Even smaller font size */
+    }
+    .text-container span svg{
+        font-size: 25px;
+    }
+}
+@media (max-width: 260px) {
+   
+
+    .text-container  {
+        width: 90%;
+    }
+    .text-container span {
+        font-size: 20px; /* Even smaller font size */
+    }
+    .text-container span svg{
+        font-size: 15px;
     }
 }
