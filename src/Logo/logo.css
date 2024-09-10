@@ -1,0 +1,89 @@
+:root {
+    --color1: #61c0c8;
+    --color2: #67c2c5;
+    --color3: white;
+    --color4: #aff1f9;
+}
+
+.logo-container {}
+
+.image-container {
+    margin: 20px; /* Reduced margin for smaller screens */
+}
+
+.image-container img {
+    width: 100%; /* Ensures the image takes full width of the container */
+    max-width: 300px; /* Reduced max width for smaller screens */
+    border-radius: 50%;
+}
+
+.text-container {
+    position: relative; 
+    width: 80%; /* Increased width to occupy more space on smaller screens */
+    max-width: 600px; /* Reduced max width for better fit on mobile */
+    margin: 15px auto; /* Reduced margin for mobile */
+    padding: 15px; /* Reduced padding */
+    background-color: #FFF; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-sizing: border-box; 
+    text-align: center; 
+    border-radius: 1.5rem; /* Reduced border-radius for smaller screens */
+ 
+}
+
+.text-container span {
+    font-weight: bold;
+    color: #35B848; 
+    font-family: "Kanit", sans-serif; 
+    font-size: 45px; /* Reduced font size for better readability on mobile */
+    line-height: 1.2em; 
+    margin: 0; 
+    display: inline-block; 
+    text-shadow: 
+      1px 1px 0 rgba(0, 0, 0, 0.2), 
+      2px 2px 0 rgba(0, 0, 0, 0.2), 
+      3px 3px 0 rgba(0, 0, 0, 0.2); 
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .image-container {
+        margin: 15px;
+    }
+
+    .image-container img {
+        max-width: 250px; /* Further reduce image size */
+    }
+
+    .text-container {
+    
+        padding: 10px; /* Further reduce padding */
+        margin: 10px auto;
+        border-radius: 1rem; /* Slightly reduce border-radius */
+    }
+
+    .text-container span {
+        font-size: 40px; /* Further reduce font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        margin: 10px;
+    }
+
+    .image-container img {
+        max-width: 200px; /* Even smaller image size */
+    }
+
+    .text-container {
+        padding: 8px;
+        margin: 8px auto;
+        border-radius: 0.8rem; /* Further reduce border-radius */
+    }
+
+    .text-container span {
+        font-size: 30px; /* Even smaller font size */
+    }
+}

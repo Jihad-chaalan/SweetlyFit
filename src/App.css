@@ -1,0 +1,12 @@
+:root{
+  --logocolor: #59336E;
+  --greenLogoColor :#35B848;
+}
+
+
+.App {
+  text-align: center;
+}
+body{
+  background-color:var(--logocolor) ;
+}
