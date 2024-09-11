@@ -2,11 +2,12 @@ import "./items.css";
 import { useEffect, useState } from "react";
 
 export default function Items({
-  url = "https://dummyjson.com/products?limit=10",
+  url = "https://dummyjson.com/products?limit=100",
 }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [flippedItems, setFlippedItems] = useState({});
 
   async function fetchUrl(getURL) {
     try {
@@ -29,6 +30,10 @@ export default function Items({
   useEffect(() => {
     fetchUrl(url);
   }, [url]);
+
+  const handleFlip = (id) => {
+    setFlippedItems((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   if (error) {
     return (
@@ -65,6 +70,35 @@ export default function Items({
           <div>No items found.</div>
         )}
       </div>
+      {/* <div className="item-header">Our items:</div>
+      <div className="items-container">
+        {data.length > 0 ? (
+          data.map((item) => (
+            <div
+              key={item.id}
+              className={`item-box ${flippedItems[item.id] ? "flipped" : ""}`}
+              onClick={() => handleFlip(item.id)}
+            >
+              <div className="item-box-inner">
+                <div className="item-box-front">
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="item-image"
+                  />
+                  <span className="item-name">{item.title}</span>
+                  <span className="item-price">Price: ${item.price}</span>
+                </div>
+                <div className="item-box-back">
+                  <p className="item-description">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>No items found.</div>
+        )}
+      </div> */}
     </>
   );
 }
