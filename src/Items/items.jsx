@@ -7,7 +7,7 @@ export default function Items({
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [flippedItems, setFlippedItems] = useState({});
+  const [flippedItem, setFlippedItem] = useState(null);
 
   async function fetchUrl(getURL) {
     try {
@@ -32,7 +32,7 @@ export default function Items({
   }, [url]);
 
   const handleFlip = (id) => {
-    setFlippedItems((prev) => ({ ...prev, [id]: !prev[id] }));
+    setFlippedItem(id);
   };
 
   if (error) {
@@ -56,30 +56,18 @@ export default function Items({
       <div className="items-container">
         {data.length > 0 ? (
           data.map((item) => (
-            <div key={item.id} className="item-box">
-              <img
-                src={item.thumbnail}
-                alt={item.title}
-                className="item-image"
-              />
-              <span className="item-name">{item.title}</span>
-              <span className="item-price">Price: ${item.price}</span>
-            </div>
-          ))
-        ) : (
-          <div>No items found.</div>
-        )}
-      </div>
-      {/* <div className="item-header">Our items:</div>
-      <div className="items-container">
-        {data.length > 0 ? (
-          data.map((item) => (
             <div
               key={item.id}
-              className={`item-box ${flippedItems[item.id] ? "flipped" : ""}`}
-              onClick={() => handleFlip(item.id)}
+              className="item-box"
+              onClick={() =>
+                handleFlip(item.id === flippedItem ? null : item.id)
+              }
             >
-              <div className="item-box-inner">
+              <div
+                className={`inner-box ${
+                  item.id === flippedItem ? "flipped" : ""
+                }`}
+              >
                 <div className="item-box-front">
                   <img
                     src={item.thumbnail}
@@ -98,7 +86,7 @@ export default function Items({
         ) : (
           <div>No items found.</div>
         )}
-      </div> */}
+      </div>
     </>
   );
 }
