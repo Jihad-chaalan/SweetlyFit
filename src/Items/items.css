@@ -128,6 +128,15 @@
   width: 100%;
   max-width: 600px;
 }
+.item-box-back p {
+  color: #35B848;
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+  margin: 10px 0;
+  padding: 5px;
+}
+
 
 /* Responsive adjustments for tablets */
 @media (min-width: 600px) {

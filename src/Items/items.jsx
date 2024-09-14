@@ -2,7 +2,7 @@ import "./items.css";
 import { useEffect, useState } from "react";
 
 export default function Items({
-  url = "https://dummyjson.com/products?limit=100",
+  url = "https://dummyjson.com/products?limit=10",
 }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);

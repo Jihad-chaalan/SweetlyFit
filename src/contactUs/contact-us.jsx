@@ -1,0 +1,32 @@
+import React from "react";
+import "./contact-us.css";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Using react-icons for the logos
+
+const ContactUs = () => {
+  return (
+    <div className="contact-us-container">
+      <h1>Contact Us</h1>
+      <p>
+        We'd love to hear from you! Reach out to us on Instagram or WhatsApp.
+      </p>
+      <div className="contact-icons">
+        <a
+          href="https://www.instagram.com/yourprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaInstagram className="contact-icon instagram" />
+        </a>
+        <a
+          href="https://wa.me/yourwhatsappnumber"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaWhatsapp className="contact-icon whatsapp" />
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default ContactUs;
