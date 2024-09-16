@@ -1,24 +1,37 @@
 import "./items.css";
 import { useEffect, useState } from "react";
+import { createClient } from "contentful";
 
-export default function Items({
-  url = "https://dummyjson.com/products?limit=10",
-}) {
+export default function Items() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [flippedItem, setFlippedItem] = useState(null);
 
-  async function fetchUrl(getURL) {
+  const client = createClient({
+    space: process.env.REACT_APP_CONTENTFUL_SPACE_ID, // Add this to your .env file
+    accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN, // Add this to your .env file
+  });
+
+  async function fetchUrl() {
     try {
       setLoading(true);
       setError(""); // Clear any previous errors
-      const response = await fetch(getURL);
-      const result = await response.json();
-      if (result?.products?.length) {
-        setData(result.products);
+      const response = await client.getEntries({
+        content_type: "product", // Replace with your content type ID
+      });
+
+      if (response.items.length) {
+        const transformedData = response.items.map((item) => ({
+          id: item.sys.id,
+          title: item.fields.title,
+          thumbnail: item.fields.thumbnail.fields.file.url,
+          price: item.fields.price,
+          description: item.fields.description,
+        }));
+        setData(transformedData);
       } else {
-        setData([]); // Handle empty or malformed data
+        setData([]); // Handle empty data
       }
     } catch (e) {
       setError(e.message || "An unexpected error occurred."); // Handle any fetch errors
@@ -27,9 +40,27 @@ export default function Items({
     }
   }
 
+  // async function fetchUrl(getURL) {
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+  //     const response = await fetch(getURL);
+  //     const result = await response.json();
+  //     if (result?.products?.length) {
+  //       setData(result.products);
+  //     } else {
+  //       setData([]);
+  //     }
+  //   } catch (e) {
+  //     setError(e.message || "An unexpected error occurred.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
   useEffect(() => {
-    fetchUrl(url);
-  }, [url]);
+    fetchUrl();
+  }, []);
 
   const handleFlip = (id) => {
     setFlippedItem(id);

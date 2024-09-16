@@ -3,6 +3,7 @@ import "./contact-us.css";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Using react-icons for the logos
 
 const ContactUs = () => {
+  const whatsappLink = process.env.REACT_APP_WHATSAPP_LINK;
   return (
     <div className="contact-us-container">
       <h1>Contact Us</h1>
@@ -17,11 +18,7 @@ const ContactUs = () => {
         >
           <FaInstagram className="contact-icon instagram" />
         </a>
-        <a
-          href="https://wa.me/yourwhatsappnumber"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
           <FaWhatsapp className="contact-icon whatsapp" />
         </a>
       </div>
