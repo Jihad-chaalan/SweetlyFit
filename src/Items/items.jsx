@@ -1,5 +1,5 @@
 import "./items.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { createClient } from "contentful";
 
 export default function Items() {
@@ -13,7 +13,7 @@ export default function Items() {
     accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
   });
 
-  async function fetchUrl() {
+  const fetchUrl = useCallback(async () => {
     try {
       setLoading(true);
       setError("");
@@ -38,7 +38,33 @@ export default function Items() {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
+  // async function fetchUrl() {
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+  //     const response = await client.getEntries({
+  //       content_type: "product",
+  //     });
+
+  //     if (response.items.length) {
+  //       const transformedData = response.items.map((item) => ({
+  //         id: item.sys.id,
+  //         title: item.fields.title,
+  //         thumbnail: item.fields.thumbnail.fields.file.url,
+  //         price: item.fields.price,
+  //         description: item.fields.description,
+  //       }));
+  //       setData(transformedData);
+  //     } else {
+  //       setData([]);
+  //     }
+  //   } catch (e) {
+  //     setError(e.message || "An unexpected error occurred.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   // async function fetchUrl(getURL) {
   //   try {
