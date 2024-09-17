@@ -1,5 +1,5 @@
 import "./items.css";
-import { useEffect, useState, useCallback } from "react";
+import { useMemo, useEffect, useState, useCallback } from "react";
 import { createClient } from "contentful";
 
 export default function Items() {
@@ -8,10 +8,14 @@ export default function Items() {
   const [error, setError] = useState("");
   const [flippedItem, setFlippedItem] = useState(null);
 
-  const client = createClient({
-    space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
-  });
+  const client = useMemo(
+    () =>
+      createClient({
+        space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+      }),
+    []
+  ); // Memoize client to avoid recreation on every render
 
   const fetchUrl = useCallback(async () => {
     try {
@@ -38,7 +42,39 @@ export default function Items() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [client]);
+
+  // const client = createClient({
+  //   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+  //   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+  // });
+
+  // const fetchUrl = useCallback(async () => {
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+  //     const response = await client.getEntries({
+  //       content_type: "product",
+  //     });
+
+  //     if (response.items.length) {
+  //       const transformedData = response.items.map((item) => ({
+  //         id: item.sys.id,
+  //         title: item.fields.title,
+  //         thumbnail: item.fields.thumbnail.fields.file.url,
+  //         price: item.fields.price,
+  //         description: item.fields.description,
+  //       }));
+  //       setData(transformedData);
+  //     } else {
+  //       setData([]);
+  //     }
+  //   } catch (e) {
+  //     setError(e.message || "An unexpected error occurred.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }, [client]);
   // async function fetchUrl() {
   //   try {
   //     setLoading(true);
