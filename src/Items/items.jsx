@@ -60,7 +60,7 @@ export default function Items() {
 
   useEffect(() => {
     fetchUrl();
-  }, []);
+  }, [fetchUrl]);
 
   const handleFlip = (id) => {
     setFlippedItem(id);
