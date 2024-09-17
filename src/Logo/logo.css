@@ -1,18 +1,11 @@
-:root {
-    --color1: #61c0c8;
-    --color2: #67c2c5;
-    --color3: white;
-    --color4: #aff1f9;
-}
-
 
 .image-container {
-    margin: 20px; /* Reduced margin for smaller screens */
+    margin: 20px; 
 }
 
 .image-container img {
-    width: 100%; /* Ensures the image takes full width of the container */
-    max-width: 300px; /* Reduced max width for smaller screens */
+    width: 100%;
+    max-width: 300px; 
     border-radius: 50%;
 }
 
@@ -38,7 +31,7 @@
     font-weight: bold;
     color: #35B848; 
     font-family: "Kanit", sans-serif; 
-    font-size: 45px; /* Reduced font size for better readability on mobile */
+    font-size: 45px; 
     line-height: 1.2em; 
     margin: 0; 
     display: inline-block; 
@@ -51,25 +44,25 @@
     font-size: 35px;
 }
 
-/* Media queries for smaller screens */
+
 @media (max-width: 768px) {
     .image-container {
         margin: 15px;
     }
 
     .image-container img {
-        max-width: 250px; /* Further reduce image size */
+        max-width: 250px; 
     }
 
     .text-container {
     
-        padding: 10px; /* Further reduce padding */
+        padding: 10px; 
         margin: 10px auto;
-        border-radius: 1rem; /* Slightly reduce border-radius */
+        border-radius: 1rem; 
     }
 
     .text-container span {
-        font-size: 40px; /* Further reduce font size */
+        font-size: 40px; 
     }
     .text-container span svg{
         font-size: 30px;
@@ -82,17 +75,17 @@
     }
 
     .image-container img {
-        max-width: 200px; /* Even smaller image size */
+        max-width: 200px;
     }
 
     .text-container {
         padding: 8px;
         margin: 8px auto;
-        border-radius: 0.8rem; /* Further reduce border-radius */
+        border-radius: 0.8rem; 
     }
 
     .text-container span {
-        font-size: 30px; /* Even smaller font size */
+        font-size: 30px;
     }
     .text-container span svg{
         font-size: 25px;
@@ -105,7 +98,7 @@
         width: 90%;
     }
     .text-container span {
-        font-size: 20px; /* Even smaller font size */
+        font-size: 20px; 
     }
     .text-container span svg{
         font-size: 15px;

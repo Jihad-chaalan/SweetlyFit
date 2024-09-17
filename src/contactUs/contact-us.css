@@ -1,18 +1,10 @@
 .contact-us-container {
-  /* background-color: #F9F9F9;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+
   
   background-color: #F9F9F9;
     padding: 20px;
-    /* border-radius: 10px; */
     text-align: center;
-    /* max-width: 600px; */
-    /* margin: 0 auto; */
+
 }
 
 .contact-us-container h1 {

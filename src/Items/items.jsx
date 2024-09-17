@@ -9,16 +9,16 @@ export default function Items() {
   const [flippedItem, setFlippedItem] = useState(null);
 
   const client = createClient({
-    space: process.env.REACT_APP_CONTENTFUL_SPACE_ID, // Add this to your .env file
-    accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN, // Add this to your .env file
+    space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+    accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
   });
 
   async function fetchUrl() {
     try {
       setLoading(true);
-      setError(""); // Clear any previous errors
+      setError("");
       const response = await client.getEntries({
-        content_type: "product", // Replace with your content type ID
+        content_type: "product",
       });
 
       if (response.items.length) {
@@ -31,12 +31,12 @@ export default function Items() {
         }));
         setData(transformedData);
       } else {
-        setData([]); // Handle empty data
+        setData([]);
       }
     } catch (e) {
-      setError(e.message || "An unexpected error occurred."); // Handle any fetch errors
+      setError(e.message || "An unexpected error occurred.");
     } finally {
-      setLoading(false); // Ensure loading state is stopped in both success and error cases
+      setLoading(false);
     }
   }
 

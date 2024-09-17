@@ -1,4 +1,4 @@
-/* Error message styling */
+
 .error {
   color: #ff4d4f;
   background-color: #ffe8e8;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-/* Loading message styling */
+
 .loading {
   color: #35B848;
   background-color: #e6f7ff;
@@ -25,7 +25,7 @@
   width: 100%;
 }
 
-/* Container for items */
+
 .items-container {
   display: flex;
   flex-wrap: wrap;
@@ -34,24 +34,15 @@
   padding: 20px;
 }
 
-/* Item box styling */
 .item-box {
   height: 30rem;
   position: relative;
   width: 100%;
 }
 
-/* Inner box for flip effect */
+
 .inner-box {
-  /* background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease; */
+
   display: flex;
   align-items: center;
   background-color: #ffffff;
@@ -70,20 +61,13 @@
   transform: rotateY(180deg);
 }
 
-/* Front and back faces of the flip box */
 .item-box-front,
 .item-box-back {
-  /* position: absolute;
-  text-align: center;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backface-visibility: hidden; */
+
   position: absolute;
     gap: 15px;
     text-align: center;
-    /* padding: 16px; */
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +78,7 @@
   transform: rotateY(180deg);
 }
 
-/* Image inside the item */
+
 .item-image {
   width: 100%;
   height: auto;
@@ -102,7 +86,6 @@
   margin-bottom: 12px;
 }
 
-/* Item name styling */
 .item-name {
   font-size: 18px;
   font-weight: bold;
@@ -110,13 +93,12 @@
   margin-bottom: 8px;
 }
 
-/* Item price styling */
+
 .item-price {
   font-size: 16px;
   color: #59336E;
 }
 
-/* Header for the items section */
 .item-header {
   margin: 100px auto 25px;
   font-size: 24px;
@@ -138,7 +120,7 @@
 }
 
 
-/* Responsive adjustments for tablets */
+
 @media (min-width: 600px) {
   .item-box {
     width: calc(50% - 20px); /* Two items per row */

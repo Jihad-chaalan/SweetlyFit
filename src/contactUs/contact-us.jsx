@@ -1,6 +1,6 @@
 import React from "react";
 import "./contact-us.css";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Using react-icons for the logos
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const ContactUs = () => {
   const whatsappLink = process.env.REACT_APP_WHATSAPP_LINK;
@@ -12,7 +12,7 @@ const ContactUs = () => {
       </p>
       <div className="contact-icons">
         <a
-          href="https://www.instagram.com/yourprofile"
+          href="https://www.instagram.com/sweetlyfitbyelissar"
           target="_blank"
           rel="noopener noreferrer"
         >
