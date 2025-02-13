@@ -1,6 +1,7 @@
 import "./items.css";
 import { useMemo, useEffect, useState, useCallback } from "react";
 import { createClient } from "contentful";
+import { ArrowRightCircle } from "lucide-react";
 
 export default function Items() {
   const [data, setData] = useState([]);
@@ -15,7 +16,7 @@ export default function Items() {
         accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
       }),
     []
-  ); // Memoize client to avoid recreation on every render
+  );
 
   const fetchUrl = useCallback(async () => {
     try {
@@ -31,6 +32,7 @@ export default function Items() {
           title: item.fields.title,
           thumbnail: item.fields.thumbnail.fields.file.url,
           price: item.fields.price,
+          prices: item.fields.prices,
           description: item.fields.description,
         }));
         setData(transformedData);
@@ -43,82 +45,6 @@ export default function Items() {
       setLoading(false);
     }
   }, [client]);
-
-  // const client = createClient({
-  //   space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-  //   accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
-  // });
-
-  // const fetchUrl = useCallback(async () => {
-  //   try {
-  //     setLoading(true);
-  //     setError("");
-  //     const response = await client.getEntries({
-  //       content_type: "product",
-  //     });
-
-  //     if (response.items.length) {
-  //       const transformedData = response.items.map((item) => ({
-  //         id: item.sys.id,
-  //         title: item.fields.title,
-  //         thumbnail: item.fields.thumbnail.fields.file.url,
-  //         price: item.fields.price,
-  //         description: item.fields.description,
-  //       }));
-  //       setData(transformedData);
-  //     } else {
-  //       setData([]);
-  //     }
-  //   } catch (e) {
-  //     setError(e.message || "An unexpected error occurred.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [client]);
-  // async function fetchUrl() {
-  //   try {
-  //     setLoading(true);
-  //     setError("");
-  //     const response = await client.getEntries({
-  //       content_type: "product",
-  //     });
-
-  //     if (response.items.length) {
-  //       const transformedData = response.items.map((item) => ({
-  //         id: item.sys.id,
-  //         title: item.fields.title,
-  //         thumbnail: item.fields.thumbnail.fields.file.url,
-  //         price: item.fields.price,
-  //         description: item.fields.description,
-  //       }));
-  //       setData(transformedData);
-  //     } else {
-  //       setData([]);
-  //     }
-  //   } catch (e) {
-  //     setError(e.message || "An unexpected error occurred.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
-  // async function fetchUrl(getURL) {
-  //   try {
-  //     setLoading(true);
-  //     setError("");
-  //     const response = await fetch(getURL);
-  //     const result = await response.json();
-  //     if (result?.products?.length) {
-  //       setData(result.products);
-  //     } else {
-  //       setData([]);
-  //     }
-  //   } catch (e) {
-  //     setError(e.message || "An unexpected error occurred.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
 
   useEffect(() => {
     fetchUrl();
@@ -168,7 +94,16 @@ export default function Items() {
                     className="item-image"
                   />
                   <span className="item-name">{item.title}</span>
-                  <span className="item-price">Price: ${item.price}</span>
+                  <div>
+                    {item.prices?.prices.map((price, index) => (
+                      <span key={index} className="item-price">
+                        {price}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flip-icon">
+                    <ArrowRightCircle size={20} color="rgba(0, 0, 0, 0.6)" />
+                  </div>
                 </div>
                 <div className="item-box-back">
                   <p className="item-description">{item.description}</p>
